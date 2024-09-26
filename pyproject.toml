@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "py312-to-py311"
+version = "0.1.0"
+description = "Script to convert syntax of python 3.11 to python 3.12."
+authors = ["heinwol <heinvvol@gmail.com>"]
+license = "GPLv3"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+ast-grep-py = "^0.27.3"
+typed-argument-parser = "^1.10.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.7"
+
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+preview = true
+extend-select = ["W505", "I", "PLC2701", "PYI"]
+ignore = ["E741", "F821", "F841"]
+# extend-safe-fixes = ["F401"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff.lint.isort]
+order-by-type = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 100
+ignore-overlong-task-comments = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
