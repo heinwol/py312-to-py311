@@ -1,0 +1,28 @@
+{
+    "files.exclude": {
+        "**/.*env": true,
+    },
+    "editor.rulers": [
+        {
+            "column": 100
+        }
+    ],
+    "cSpell.enableFiletypes": [
+        "python"
+    ],
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUnusedClass": "warning",
+        "reportUnusedFunction": "warning"
+    },
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    // "runOnSave.commands": [
+    //     {
+    //         "match": ".*\\.py",
+    //         "command": "docformatter --in-place ${file}"
+    //     }
+    // ]
+}
