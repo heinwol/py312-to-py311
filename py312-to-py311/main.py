@@ -144,7 +144,7 @@ def _parse_type(node: SgNode) -> TypeIntroduction:
 
 
 def type_parameter_collect_type_introductions(
-    type_parameter: KindAndNode[Literal["type_parameter"]],
+    type_parameter: TypeParameterNode,
 ) -> list[TypeIntroduction]:
     result: list[TypeIntroduction] = []
     for type_ in type_parameter.node.children():
@@ -179,7 +179,7 @@ def collect_all_type_introductions(
 
 
 def delete_type_parameter(
-    kind_and_node: KindAndNode[Literal["type_parameter"]],
+    kind_and_node: TypeParameterNode,
 ) -> Edit:
     return kind_and_node.node.replace("")
 
@@ -359,10 +359,13 @@ class KindAndNode[K: str]:
         return [cls(kind=kind, node=node_) for node_ in node.find_all(kind=cls.kind)]
 
 
+type TypeParameterNode = KindAndNode[Literal["type_parameter"]]
+
+
 @dataclass
 class _TypeIntroductionsWithMeta:
     introductions: list[TypeIntroduction]
-    type_parameter_node: KindAndNode[Literal["type_parameter"]]
+    type_parameter_node: TypeParameterNode
     syntax_introduction_node: ISyntaxIntroduction[Any]
 
 
@@ -375,7 +378,7 @@ class ISyntaxIntroduction[K: str](ABC):
     @abstractmethod
     def navigate_to_type_parameter(
         self,
-    ) -> Optional[KindAndNode[Literal["type_parameter"]]]: ...
+    ) -> Optional[TypeParameterNode]: ...
 
     @abstractmethod
     def rewrite_generic_params(self, params: Sequence[TypeIntroduction]) -> Edit:
@@ -392,7 +395,7 @@ class TypeAliasStatement(ISyntaxIntroduction[Literal["type_alias_statement"]]):
 
     def navigate_to_type_parameter(
         self,
-    ) -> Optional[KindAndNode[Literal["type_parameter"]]]:
+    ) -> Optional[TypeParameterNode]:
         result = self.kind_and_node.node.child(1).find(kind="type_parameter")  # type: ignore
         return (
             None
@@ -418,7 +421,7 @@ class ClassDefinition(ISyntaxIntroduction[Literal["class_definition"]]):
 
     def navigate_to_type_parameter(
         self,
-    ) -> Optional[KindAndNode[Literal["type_parameter"]]]:
+    ) -> Optional[TypeParameterNode]:
         result = self.kind_and_node.node.field("type_parameters")
         return (
             None
@@ -463,7 +466,7 @@ class FunctionDefinition(ISyntaxIntroduction[Literal["function_definition"]]):
 
     def navigate_to_type_parameter(
         self,
-    ) -> Optional[KindAndNode[Literal["type_parameter"]]]:
+    ) -> Optional[TypeParameterNode]:
         result = self.kind_and_node.node.field("type_parameters")
         return (
             None
