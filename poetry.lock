@@ -82,6 +82,24 @@ files = [
 ]
 
 [[package]]
+name = "returns"
+version = "0.23.0"
+description = "Make your functions return something meaningful, typed, and safe!"
+optional = false
+python-versions = "<4.0,>=3.9"
+files = [
+    {file = "returns-0.23.0-py3-none-any.whl", hash = "sha256:278aa6168072b24574ad14be32f7123d1b835928473dd40bc506f47c8b25859a"},
+    {file = "returns-0.23.0.tar.gz", hash = "sha256:27594c28e5fc338e052d27ddf77fe1da82db4472f6d59901e7e9165be35a5256"},
+]
+
+[package.dependencies]
+typing-extensions = ">=4.0,<5.0"
+
+[package.extras]
+check-laws = ["hypothesis (>=6.98,<7.0)", "pytest (>=8.0,<9.0)"]
+compatible-mypy = ["mypy (>=1.10,<1.11)"]
+
+[[package]]
 name = "ruff"
 version = "0.6.8"
 description = "An extremely fast Python linter and code formatter, written in Rust."
@@ -157,4 +175,4 @@ typing-extensions = ">=3.7.4"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "b5d3ab763c2f813c9a332efbee70beee9de5f9e16991d8d0197086c9c2d68cd6"
+content-hash = "c071b2c63846e2f79f5bebe1427ecc90774cac614448347ea04dda6b74fb807a"

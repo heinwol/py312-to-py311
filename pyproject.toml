@@ -4,12 +4,13 @@ version = "0.1.0"
 description = "Script to convert syntax of python 3.11 to python 3.12."
 authors = ["heinwol <heinvvol@gmail.com>"]
 license = "GPLv3"
-readme = "README.md"
+packages = [{ include = "py312_to_py311" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
 ast-grep-py = "^0.27.3"
 typed-argument-parser = "^1.10.1"
+returns = "^0.23.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.6.7"

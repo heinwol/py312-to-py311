@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from __future__ import annotations
 
 from collections import defaultdict
@@ -15,6 +13,7 @@ from typing import (
 
 from ast_grep_py import Config, Edit, Relation, Rule, SgNode, SgRoot
 
+from py312_to_py311.accessor import TypeParameterNode
 from py312_to_py311.syntax_introductions import (
     ClassDefinition,
     FunctionDefinition,
@@ -25,7 +24,6 @@ from py312_to_py311.type_parameters import (
     ConstrainedType,
     IdentifierIntroduction,
     TypeIntroduction,
-    TypeParameterNode,
     UnconstrainedType,
     type_parameter_collect_type_introductions,
 )

@@ -16,7 +16,7 @@
             "name": "py: main",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/py312-to-py311/main.py",
+            "program": "${workspaceFolder}/py312_to_py311/main.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}",
         },
