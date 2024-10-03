@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import logging
 from collections import defaultdict
 from collections.abc import Iterator, Sequence
 from copy import copy
@@ -14,9 +13,6 @@ from typing import (
     Protocol,
     TypeVar,
 )
-
-logging.basicConfig()
-logging.getLogger().setLevel(logging.DEBUG)
 
 
 def raises(f: Callable[[], Exception]) -> Never:
