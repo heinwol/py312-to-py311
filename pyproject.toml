@@ -15,6 +15,13 @@ returns = "^0.23.0"
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.6.7"
 
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
 
 [tool.ruff.format]
 docstring-code-format = true
