@@ -37,13 +37,13 @@ def _parse_type(node: SgNode) -> TypeIntroduction:
     match node.kind():
         case "constrained_type":
             lhs, rhs = NamedChildrenAccessor(node).named_children(functoral=False)[0:2]
-            lhs = KindAndNode[Literal["type"]]("type", lhs)
-            rhs = KindAndNode[Literal["type"]]("type", rhs)
-            lhs_type, lhs_identifier = _parse_maybe_splat(lhs)
+            lhs_ = KindAndNode[Literal["type"]]("type", lhs)
+            rhs_ = KindAndNode[Literal["type"]]("type", rhs)
+            lhs_type, lhs_identifier = _parse_maybe_splat(lhs_)
             assert lhs_type is IdentifierIntroduction
             return IdentifierIntroduction(
                 ConstrainedType(
-                    identifier=lhs_identifier, _constraint_text=rhs.node.text()
+                    identifier=lhs_identifier, _constraint_text=rhs_.node.text()
                 )
             )
         case "identifier":

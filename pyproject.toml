@@ -6,17 +6,21 @@ authors = ["heinwol <heinvvol@gmail.com>"]
 license = "GPLv3"
 packages = [{ include = "py312_to_py311" }]
 
+[tool.poetry.scripts]
+py312-to-py311 = 'py312_to_py311.main:entrypoint'
+
 [tool.poetry.dependencies]
 python = "^3.12"
 ast-grep-py = "^0.27.3"
-typed-argument-parser = "^1.10.1"
 returns = "^0.23.0"
+tyro = "^0.8.11"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.6.7"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.0"
+mypy = "^1.11.2"
 
 
 [tool.pytest.ini_options]

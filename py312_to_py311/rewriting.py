@@ -158,7 +158,9 @@ def process_all(root_node: SgNode) -> _AllEdits:
     all_type_introductions = collect_all_type_introductions(
         root_node, [TypeAliasStatement, ClassDefinition, FunctionDefinition]
     )
-    type_declarations = generate_type_declarations(all_type_introductions)
+    type_declarations = [
+        "from typing import Generic, TypeVar, TypeAlias"
+    ] + generate_type_declarations(all_type_introductions)
 
     def type_declarations_appended_after_imports(root_node_: SgNode) -> str:
         return root_node_.commit_edits(

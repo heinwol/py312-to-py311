@@ -9,11 +9,12 @@ type NodeProcessed[CalledMethodT: CalledMethod] = TypedNode[
     ProcessedTreeNodeData[CalledMethodBad]
 ]
 """
-    result = rewrite_src(test_str)
     expected_result = """
+from typing import Generic, TypeVar, TypeAlias
 CalledMethodT = TypeVar("CalledMethodT", bound="CalledMethod")
 NodeProcessed: TypeAlias = TypedNode[
     ProcessedTreeNodeData[CalledMethodBad]
 ]
 """
+    result = rewrite_src(test_str)
     assert result.strip() == expected_result.strip()
